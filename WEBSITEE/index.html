@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TRIMEXC@NNECT – College of Computer Studies</title>
+<style>
+/* TRIMEXC@NNECT – CCS | modern redesign (HTML + CSS only) */
+:root{--red:#8a0000;--red2:#b30000;--ink:#0f1724;--dark:#273244;--gray:#6b6e76;--light:#f3f4f6;--white:#fff;--r:18px;--sh:0 8px 28px rgba(0,0,0,.08)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:116px;overflow-x:hidden}
+body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;color:var(--dark);background:var(--white);line-height:1.6;overflow-x:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+.wrap{width:min(1200px,92%);margin:auto}
+section{padding:84px 0}
+.eyebrow{display:inline-block;font:700 .78rem/1 "Consolas",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15;color:var(--ink);margin-bottom:14px;letter-spacing:-.02em}
+.lead{color:var(--gray);max-width:640px;margin-bottom:40px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:700;border:2px solid transparent;transition:.25s;cursor:pointer;font-size:1rem}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(138,0,0,.35)}
+.btn-red:hover{background:var(--red2);transform:translateY(-2px)}
+.btn-ghost{border-color:rgba(255,255,255,.7);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--ink)}
+.btn-line{border-color:var(--red);color:var(--red);padding:9px 20px;font-size:.9rem}
+.btn-line:hover{background:var(--red);color:#fff}
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:#fff;border:1px solid #e7e8ec;border-radius:var(--r);padding:26px;box-shadow:var(--sh);transition:.3s;display:flex;flex-direction:column;gap:10px}
+.card:hover{transform:translateY(-6px);border-color:var(--red);box-shadow:0 16px 36px rgba(138,0,0,.16)}
+.ico{width:52px;height:52px;border-radius:14px;background:var(--light);display:grid;place-items:center;font-size:1.6rem;border-bottom:3px solid var(--red)}
+.card h3{color:var(--ink);font-size:1.12rem}
+.card p{color:var(--gray);font-size:.95rem;flex:1}
+.card .btn{align-self:flex-start;margin-top:6px}
+
+/* NAVBAR */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(14,14,16,.88);backdrop-filter:blur(12px);border-bottom:2px solid var(--red)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand img{height:44px;border-radius:10px}
+.burger{display:none;color:#fff;font-size:1.9rem;line-height:1;padding:6px 10px}
+.mclose{display:none}
+.drop{position:absolute;right:0;top:100%;min-width:260px;background:#fff;border-radius:14px;box-shadow:0 18px 40px rgba(0,0,0,.25);padding:8px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.25s}
+.has-drop:hover .drop,.has-drop:focus-within .drop{opacity:1;visibility:visible;transform:none}
+.drop a{display:block;padding:10px 14px;border-radius:9px;color:var(--dark);font-size:.93rem}
+.drop a:hover{background:var(--light);color:var(--red)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;padding:120px 0 80px;background:#111 url(img/campus.jpg) center/cover;overflow:hidden}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(10,10,12,.92) 30%,rgba(60,0,0,.55))}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:44px 44px}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,6vw,4.2rem);line-height:1.05;letter-spacing:-.03em;margin:14px 0 18px}
+.hero h1 span{color:#ff4d4d}
+.hero p{max-width:560px;color:#d6d6da;font-size:1.08rem;margin-bottom:30px}
+.hero .actions{display:flex;flex-wrap:wrap;gap:14px}
+.eyebrow.light{color:#ff7a7a}
+.cursor{animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+/* ABOUT */
+.alt{background:var(--light)}
+.dark{background:var(--ink);color:#d6d6da}
+.dark h2{color:#fff}.dark .lead{color:#a8a9b0}
+.dark .card{background:var(--dark);border-color:#35363c}
+.dark .card h3{color:#fff}.dark .card p{color:#b4b5bb}
+.dark .ico{background:#1a1b1f}
+
+/* GAZETTE */
+.date{font:700 .78rem Consolas,monospace;color:var(--red);letter-spacing:.08em}
+
+/* ENROLL BANNER */
+.enroll{position:relative;text-align:center;color:#fff;background:linear-gradient(rgba(10,10,12,.9),rgba(70,0,0,.88)),url(img/campus.jpg) center/cover;overflow:hidden}
+.enroll:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);background-size:26px 26px}
+.enroll .wrap{position:relative}
+.enroll h2{color:#fff}.enroll p{max-width:600px;margin:0 auto 28px;color:#e0e0e4}
+.enroll .btn{font-size:1.1rem;padding:16px 38px;animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,60,60,.6)}70%{box-shadow:0 0 0 18px rgba(255,60,60,0)}100%{box-shadow:0 0 0 0 rgba(255,60,60,0)}}
+
+/* CONTACT / FOOTER */
+.contact .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+footer{background:var(--ink);color:#a8a9b0;padding:46px 0 24px;border-top:3px solid var(--red)}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px;margin-bottom:28px}
+footer h4{color:#fff;margin-bottom:10px}
+footer a{display:block;padding:3px 0}footer a:hover{color:#ff6b6b}
+footer .copy{border-top:1px solid #2c2d33;padding-top:18px;font-size:.85rem;text-align:center}
+footer img{height:48px;border-radius:10px;margin-bottom:12px}
+
+/* ENROLLMENT FORM (opens via :target – no JS) */
+.modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:24px 12px}
+.modal:target{display:flex;animation:fade .3s}
+@keyframes fade{from{opacity:0}}
+.sheet{background:#fff;border-radius:var(--r);width:min(760px,100%);padding:30px;position:relative;border-top:6px solid var(--red)}
+.sheet h3{font-size:1.5rem;color:var(--ink)}
+.close{position:absolute;right:16px;top:12px;font-size:1.8rem;color:var(--gray)}
+.close:hover{color:var(--red)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+form .full{grid-column:1/-1}
+label{font-size:.85rem;font-weight:600;color:var(--dark);display:grid;gap:5px}
+input,select,textarea{font:inherit;padding:11px 13px;border:1.5px solid #d6d8de;border-radius:10px;width:100%;background:#fafafa;transition:.2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(138,0,0,.15);background:#fff}
+form .btn{justify-content:center}
+
+/* RESPONSIVE */
+.hero{min-height:100vh;min-height:100svh}
+.nav .wrap{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+@media(min-width:1700px){.wrap{width:min(1440px,90%)}html{font-size:18px}}
+@media(min-width:2200px){.wrap{width:min(1760px,86%)}html{font-size:21px}}
+@media(max-width:1100px){.menu>li>a{padding:9px 11px;font-size:.95rem}.hero .wrap{gap:24px}}
+@media(max-width:900px){
+ .hero .wrap,.about .wrap,footer .cols{grid-template-columns:1fr}
+ .term{display:none}
+ .hero{text-align:left;padding:110px 0 90px}
+ .nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(14,14,16,.97)}
+ .burger{display:block}
+ .menu{display:none;position:fixed;top:68px;left:0;right:0;bottom:0;background:rgba(14,14,16,.98);flex-direction:column;align-items:stretch;gap:4px;padding:16px 5%;overflow-y:auto}
+ .menu:target{display:flex}
+ .mclose{display:block}.mclose a{color:#ff7a7a!important}
+ .menu>li>a{font-size:1.1rem;padding:14px 16px;border-radius:12px}
+ .menu .cta{margin:8px 0 0;text-align:center}
+ .drop{position:static;opacity:1;visibility:visible;transform:none;background:transparent;box-shadow:none;padding:0 0 6px 14px;min-width:0}
+ .drop a{color:#b9bac0;padding:9px 14px;border-left:2px solid #35363c;border-radius:0 9px 9px 0}
+ .drop a:hover{border-color:var(--red)}
+ section{padding:60px 0}
+ .stats{margin-top:-40px}
+ form{grid-template-columns:1fr}
+ .lead{margin-bottom:28px}
+}
+@media(max-width:600px){
+ section{padding:48px 0}
+ .brand img{height:38px}
+ .hero h1{font-size:clamp(2rem,9.5vw,2.8rem)}
+ .hero p{font-size:1rem}
+ .hero .actions{flex-direction:column}
+ .hero .actions .btn,.enroll .btn{width:100%;justify-content:center}
+ .enroll .btn{padding:15px 20px}
+ .grid{gap:16px}
+ .g3,.g4{grid-template-columns:1fr}
+ .card{padding:20px}
+ .stats .grid{grid-template-columns:1fr 1fr;padding:18px}
+ .stats strong{font-size:1.5rem}
+ .thumb{height:120px}
+ .modal{padding:0}
+ .sheet{border-radius:0;min-height:100%;padding:22px 16px}
+ .tabs{border-radius:16px}.tabs label{font-size:.78rem;padding:9px 4px}
+ fieldset{grid-template-columns:1fr}
+ .close{right:12px;top:8px}
+ footer .copy{font-size:.78rem}
+ .dark .btn-red{width:100%;justify-content:center}
+}
+@media(max-width:360px){.wrap{width:94%}.menu>li>a{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* v2 additions */
+:focus-visible{outline:3px solid #ff4d4d;outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:0;background:#fff;padding:10px;z-index:200}.skip:focus{left:10px}
+.topbar{background:var(--ink);color:#c9cad0;font-size:.78rem;border-bottom:1px solid #2c2d33}
+.topbar .wrap{height:32px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.topbar b{color:#fff;font-weight:600}.topbar span{color:#ff8a8a}
+.nav .wrap.bar{height:68px}
+.menu>li>a{text-transform:uppercase;font-size:.88rem;letter-spacing:.04em}
+.drop{max-height:72vh;overflow-y:auto;min-width:290px}
+.drop.left{left:0;right:auto}
+.menu>li>a:hover,.menu>li>a:focus-visible{background:rgba(255,255,255,.12)}
+.hero{padding:150px 0 110px}
+.hero .shape{position:absolute;border:2px solid rgba(255,90,90,.35);border-radius:22px;z-index:1;animation:float 8s ease-in-out infinite}
+.s1{width:120px;height:120px;right:8%;top:22%;transform:rotate(18deg)}.s2{width:70px;height:70px;right:22%;bottom:16%;border-radius:50%;animation-delay:2s}
+.quick{margin-top:-60px;position:relative;z-index:3;padding:0}
+.quick .card{border-top:4px solid var(--red)}
+.about .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:start}
+.ticks li{padding-left:28px;position:relative;margin:8px 0}.ticks li:before{content:"✔";position:absolute;left:0;color:var(--red)}
+.me{background:#fff;border:1px solid #e7e8ec;border-radius:var(--r);box-shadow:var(--sh);padding:26px;border-top:5px solid var(--red)}
+.me h3{color:var(--ink);font-size:1.3rem}.me .lbl{font:700 .72rem Consolas,monospace;letter-spacing:.14em;color:var(--red);text-transform:uppercase;display:block;margin-bottom:10px}
+.me dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:12px 0}.me dt{color:var(--gray);font-size:.88rem}.me dd{font-weight:600;color:var(--ink)}
+.me q{display:block;border-left:4px solid var(--red);padding-left:14px;font-style:italic;color:var(--dark)}
+.thumb{height:130px;border-radius:12px;background:linear-gradient(135deg,var(--ink),var(--red));display:grid;place-items:center;font-size:3rem}
+.date{font:700 .78rem Consolas,monospace;color:var(--red);letter-spacing:.08em}
+.g5{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.dark .btn-line{border-color:#ff6b6b;color:#ff8a8a}.dark .btn-line:hover{background:var(--red);color:#fff}
+.enroll .card{background:rgba(255,255,255,.96);color:var(--dark);text-align:left}
+.enroll .card p{color:var(--gray);max-width:none;margin:0}
+.enroll .card .btn{animation:none;width:auto;font-size:.95rem;padding:11px 22px}
+.enroll .grid{margin-top:34px}
+.ok{display:none}
+.modal.thanks .sheet{text-align:center;max-width:460px}.modal.thanks .big{font-size:3rem}
+@media(max-width:900px){.about .wrap{grid-template-columns:1fr}
+ .menu{top:100px}.hero{padding:140px 0 100px}.drop{max-height:none}
+ .menu>li>a{text-transform:uppercase}}
+@media(max-width:600px){.quick{margin-top:-40px}.topbar{font-size:.68rem}.topbar .wrap{height:30px}
+ .enroll .card .btn{width:100%;justify-content:center}.me dl{grid-template-columns:1fr}}
+@media(max-width:360px){.topbar span{display:none}}
+
+
+/* v3: mega-menu, enrollment cards, accordion */
+.wrap.bar{position:relative}
+.has-drop.mega-li{position:static}
+.drop.mega{left:0;right:0;margin:0 auto;width:min(800px,94vw);display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:14px;top:100%}
+.drop.cards{display:grid;gap:8px;min-width:300px;padding:12px}
+.drop.cards a{border:1px solid #e7e8ec;border-radius:12px;padding:12px 14px}
+.drop.cards b{display:block;color:var(--ink)}.drop.cards small{color:var(--gray)}
+.drop.cards a:hover{border-color:var(--red)}
+.acc,.acc-t{display:none}
+.tagline{font:700 .95rem Consolas,monospace;letter-spacing:.16em;text-transform:uppercase;color:#ff8a8a;margin:-6px 0 14px!important}
+@media(max-width:900px){
+ .menu{left:auto;right:0;width:min(88vw,360px);box-shadow:-14px 0 40px rgba(0,0,0,.45);border-left:2px solid var(--red)}
+ .has-drop{display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+ .has-drop>a:first-child{flex:1}
+ .acc-t{display:grid;place-items:center;width:46px;height:46px;color:#fff;cursor:pointer;border-radius:12px;background:rgba(255,255,255,.1)}
+ .acc:checked+.drop{display:block}
+ .acc:checked~.drop{display:block}
+ .acc:checked+.drop.cards,.acc:checked~.drop.cards{display:grid}
+ .drop,.drop.mega,.drop.cards{display:none;width:100%;min-width:0;position:static;margin:0;padding:0 0 6px 10px;grid-template-columns:1fr;max-height:none}
+ .drop.cards a{border:0;border-left:2px solid #35363c;border-radius:0 10px 10px 0;padding:10px 14px}
+ .drop.cards b{color:#fff}.drop.cards small{color:#9a9ba2}
+ .acc-t:has(+.acc:focus-visible){outline:3px solid #ff4d4d}
+}
+
+/* minimal line icons */
+.ico,.thumb,.big{color:var(--red)}
+.ico{background:transparent!important;border:0!important;width:auto;height:auto;display:block;font-size:0}
+.ico svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block}
+.thumb{color:#fff}.thumb svg,.big svg{fill:none;stroke:currentColor;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.thumb svg{width:46px;height:46px}.big svg{width:56px;height:56px;margin:0 auto}
+.dark .ico{color:#ff8a8a}
+
+/* menu fixes */
+@media(min-width:901px){
+ .menu>li{align-self:stretch;display:flex;align-items:center}
+ .drop.mega{top:100%}
+}
+.card:target{border-color:var(--red);box-shadow:0 0 0 4px rgba(138,0,0,.22)}
+</style></head><body>
+<a class="skip" href="#about">Skip to content</a>
+<header class="nav">
+ <div class="topbar"><div class="wrap"><b>TRIMEX College of Computer Studies</b><span>Student Website Project</span></div></div>
+ <div class="wrap bar"><a class="brand" href="#home"><img src="img/logo.png" alt="TRIMEXC@NNECT College of Computer Studies logo"></a>
+ <a class="burger" href="#menu" aria-label="Open menu">☰</a>
+ <ul class="menu" id="menu"><li class="mclose"><a href="#home">✕ Close menu</a></li>
+  <li><a href="#home">HOME</a></li>
+  <li class="has-drop"><a href="#gazette">GAZETTE ▾</a><label class="acc-t" for="acc-g" aria-label="Toggle submenu">▾</label><input class="acc" type="checkbox" id="acc-g"><div class="drop left"><a href="#gz-ccs-gazette-vol-1">CCS Gazette Vol. 1</a><a href="#gz-ccs-gazette-vol-2">CCS Gazette Vol. 2</a></div></li>
+  <li class="has-drop mega-li"><a href="#ccsms">CCS-MS ▾</a><label class="acc-t" for="acc-m" aria-label="Toggle submenu">▾</label><input class="acc" type="checkbox" id="acc-m"><div class="drop mega"><a href="#ms-research-management-system">Research Management System</a><a href="#ms-research-manual">Research Manual</a><a href="#ms-data-science-platform">Data Science Platform</a><a href="#ms-ccs-online-compiler">CCS Online Compiler</a><a href="#ms-ccs-lms-management">CCS LMS Management</a><a href="#ms-ccs-acts-voting-system">CCS ACTS Voting System</a><a href="#ms-acse-acts-voting-system">ACSE ACTS Voting System</a><a href="#ms-ccs-pageant-management-system">CCS Pageant Management System</a><a href="#ms-cybersecurity-arena">Cybersecurity Arena</a><a href="#ms-educational-cyber-range">Educational Cyber Range</a><a href="#ms-network-cybersecurity-training-lab">Network Cybersecurity Training Lab</a><a href="#ms-cybersecurity-training-lab">Cybersecurity Training Lab</a><a href="#ms-ccs-ojt-monitoring">CCS OJT Monitoring</a><a href="#ms-ccs-student-and-faculty-portfolio">CCS Student and Faculty Portfolio</a></div></li>
+  <li class="has-drop"><a class="cta" href="#enroll">ENROLL NOW! ▾</a><label class="acc-t" for="acc-e" aria-label="Toggle submenu">▾</label><input class="acc" type="checkbox" id="acc-e"><div class="drop cards"><a href="#form-new"><b>New Students</b><small>First time at Trimex</small></a><a href="#form-old"><b>Old Students</b><small>Continuing or returning</small></a><a href="#form-transferee"><b>Transferee Students</b><small>Coming from another school</small></a></div></li>
+  <li><a href="#about">ABOUT</a></li>
+ </ul></div></header>
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+ <video autoplay muted loop playsinline poster="img/campus.jpg" aria-hidden="true"><source src="video/hero.mp4" type="video/mp4"></video>
+ <i class="shape s1"></i><i class="shape s2"></i>
+ <div class="wrap"><div>
+  <span class="eyebrow light">&lt;College of Computer Studies/&gt;</span>
+  <h1>Empowering Future <span>Digital Innovators</span></h1>
+  <p class="tagline">Technology • Innovation • Learning</p>
+  <p>Students at the College of Computer Studies learn computer technology, programming, research, and digital innovation. Discover technology, creativity, innovation, and practical skills.</p>
+  <div class="actions"><a class="btn btn-red" href="#about">Explore CCS</a><a class="btn btn-ghost" href="#enroll">Enroll Now</a></div></div>
+ <div class="term" aria-hidden="true"><div class="bar"><i></i> ccs@trimex:~</div><pre><b>$</b> whoami
+<em>future_innovator</em>
+<b>$</b> ./build --skills
+<em>✔ code ✔ network ✔ secure</em>
+<b>$</b> enroll --now<span class="cursor">▌</span></pre></div></div></section>
+<!-- QUICK ACCESS -->
+<section class="quick" aria-label="Quick access"><div class="wrap"><div class="grid g4"><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2V4z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3>Gazette</h3><p>Stay updated with CCS publications.</p><a class="btn btn-line" href="#gazette">View Gazette</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><h3>CCS-MS</h3><p>Access CCS online systems and platforms.</p><a class="btn btn-line" href="#ccsms">Explore CCS-MS</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4z"/></svg></div><h3>Enrollment</h3><p>Find information for new, old, and transferee students.</p><a class="btn btn-line" href="#enroll">Enroll Now</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></div><h3>Student &amp; Faculty Portfolio</h3><p>Explore academic and professional work.</p><a class="btn btn-line" href="#ccsms">Explore</a></article></div></section>
+<!-- ABOUT -->
+<section class="about" id="about" style="padding-top:90px"><div class="wrap">
+ <div><span class="eyebrow">About This Project</span><h2>About the College of Computer Studies</h2>
+ <p class="lead" style="margin-bottom:16px">The Trimex College of Computer Studies provides students with opportunities to develop technical knowledge, creativity, problem-solving skills, and practical experience in information technology and computing.</p>
+ <ul class="ticks"><li>Project-based learning in modern computer laboratories</li><li>Research and capstone guidance from faculty</li><li>On-the-job training and OJT monitoring</li><li>Digital campus services through CCS-MS</li></ul></div>
+ <aside class="me"><span class="lbl">Website Redesign Project</span><h3>Trixie Joy S. Gabijan</h3>
+ <dl><dt>Section</dt><dd>BSIT-MWD5-M2</dd><dt>Subject</dt><dd>USERDSGN LAB</dd><dt>Professor</dt><dd>Dr. Louie Agustin</dd></dl>
+ <q>“As an IT student, keep your dreams higher.”</q></aside></div></section>
+<!-- PROGRAMS -->
+<section class="alt" id="programs"><div class="wrap"><span class="eyebrow">Programs</span><h2>Programs &amp; Courses</h2><p class="lead">Technology-focused programs that prepare you for the digital workplace.</p><div class="grid g3"><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></div><h3>Bachelor of Science in Information Technology</h3><p>Develop skills in software development, databases, networking, web technologies, and information systems.</p><a class="btn btn-line" href="#">Learn More</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></div><h3>Bachelor of Science in Computer Science</h3><p>Build strong foundations in programming, algorithms, computing concepts, and software development.</p><a class="btn btn-line" href="#">Learn More</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div><h3>Bachelor of Science in Information Systems</h3><p>Learn how technology and information systems support organizations and business operations.</p><a class="btn btn-line" href="#">Learn More</a></article></div></div></section>
+<!-- GAZETTE -->
+<section id="gazette"><div class="wrap"><span class="eyebrow">Gazette</span><h2>CCS Gazette</h2><p class="lead">Read the official publications of the College of Computer Studies.</p><div class="grid g3"><article class="card" id="gz-ccs-gazette-vol-1"><div class="thumb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5v-15z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></div><span class="date">PUBLICATION · VOL. 1</span><h3>CCS Gazette Vol. 1</h3><p>Stories, achievements and campus highlights from the College of Computer Studies.</p><a class="btn btn-line" href="#">Read More</a></article><article class="card" id="gz-ccs-gazette-vol-2"><div class="thumb" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5v-15z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></div><span class="date">PUBLICATION · VOL. 2</span><h3>CCS Gazette Vol. 2</h3><p>The next edition featuring student work, technology updates and college activities.</p><a class="btn btn-line" href="#">Read More</a></article></div></div></section>
+<!-- ANNOUNCEMENTS -->
+<section class="alt" id="announcements"><div class="wrap"><span class="eyebrow">Announcements</span><h2>Latest Announcements</h2><p class="lead">Updates and happenings around the college.</p><div class="grid g5"><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h3l8 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M19 9a4 4 0 0 1 0 6"/></svg></div><h3>Enrollment Updates</h3><p>Stay informed about enrollment schedules and requirements for the new term.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div><h3>College Activities</h3><p>Seminars, workshops and organization activities happening in CCS.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 21l5-3 5 3-1.5-7"/></svg></div><h3>Student Events</h3><p>Competitions, showcases and gatherings for CCS students.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11a2 2 0 0 1 2 2v13H7a2 2 0 0 1-2-2V4z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><h3>CCS News</h3><p>Highlights, achievements and updates from the College of Computer Studies.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 12l6-6"/></svg></div><h3>Technology Activities</h3><p>Hands-on tech sessions in coding, networking and cybersecurity.</p></article></div></div></section>
+<!-- CCS-MS -->
+<section class="dark" id="ccsms"><div class="wrap"><span class="eyebrow light">CCS-MS</span><h2>CCS Management Systems</h2>
+<p class="lead">CCS-MS provides digital platforms and systems that support research, learning, student activities, cybersecurity training, academic services, and other College of Computer Studies operations.</p>
+<div class="grid g5"><article class="card" id="ms-research-management-system"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/></svg></div><h3>Research Management System</h3><p>Manage research proposals, submissions and progress.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-research-manual"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5v-15z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></div><h3>Research Manual</h3><p>Official guidelines and templates for CCS research.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-data-science-platform"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Data Science Platform</h3><p>Tools and datasets for data analysis and learning.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-ccs-online-compiler"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></div><h3>CCS Online Compiler</h3><p>Write, run and test code directly in the browser.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-ccs-lms-management"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M10 8.5v4l4-2-4-2zM8 21h8"/></svg></div><h3>CCS LMS Management</h3><p>Online classes, modules and learning activities.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-ccs-acts-voting-system"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v8H4zM8 12l2-8h4l2 8M10 16h4"/></svg></div><h3>CCS ACTS Voting System</h3><p>Secure online voting for CCS ACTS elections.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-acse-acts-voting-system"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16v8H4zM8 12l2-8h4l2 8M10 16h4"/></svg></div><h3>ACSE ACTS Voting System</h3><p>Online voting platform for ACSE ACTS elections.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-ccs-pageant-management-system"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5L3 8z"/></svg></div><h3>CCS Pageant Management System</h3><p>Scoring and management for CCS pageant events.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-cybersecurity-arena"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div><h3>Cybersecurity Arena</h3><p>Practice cybersecurity challenges and competitions.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-educational-cyber-range"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3"/></svg></div><h3>Educational Cyber Range</h3><p>A safe environment for learning cyber defense.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-network-cybersecurity-training-lab"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Network Cybersecurity Training Lab</h3><p>Hands-on network security training exercises.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-cybersecurity-training-lab"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Cybersecurity Training Lab</h3><p>Guided labs for building cybersecurity skills.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-ccs-ojt-monitoring"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>CCS OJT Monitoring</h3><p>Track internship hours, reports and evaluations.</p><a class="btn btn-line" href="#">Access</a></article><article class="card" id="ms-ccs-student-and-faculty-portfolio"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></div><h3>CCS Student and Faculty Portfolio</h3><p>Showcase student and faculty profiles and works.</p><a class="btn btn-line" href="#">Access</a></article></div></div></section>
+<!-- SERVICES -->
+<section id="services"><div class="wrap"><span class="eyebrow">Services</span><h2>Student Services</h2><p class="lead">Support for every part of your student life.</p><div class="grid g3"><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h3M6 16c.5-2 5.5-2 6 0"/></svg></div><h3>Student Information</h3><p>Access your records and keep your student details up to date.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 15-5 16 0"/></svg></div><h3>Academic Support</h3><p>Guidance from faculty on subjects, schedules and study plans.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg></div><h3>Online Learning</h3><p>Learn anywhere through the CCS LMS and online platforms.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></div><h3>Research Support</h3><p>Help with research topics, manuals and capstone requirements.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="3.5"/><path d="M2.5 20c.8-4 11.2-4 12 0"/><circle cx="17" cy="10" r="2.5"/><path d="M16 14.5c3 0 5 1.5 5.5 4"/></svg></div><h3>OJT Support</h3><p>Assistance with internship requirements and monitoring.</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5a4 4 0 0 0-5 5L3 18l3 3 6.5-6.5a4 4 0 0 0 5-5l-2.5 2.5-2.5-.5-.5-2.5L14.5 6.5z"/></svg></div><h3>Technology Resources</h3><p>Computer labs, compilers and training environments for projects.</p></article></div></div></section>
+<!-- ENROLL -->
+<section class="enroll" id="enroll"><div class="wrap"><span class="eyebrow light">Enrollment</span><h2>Start Your Journey in Technology</h2>
+<p>Take the next step toward building your skills, knowledge, and future in the world of technology.</p><div class="grid g3"><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11.5V16c0 1 3 3 6 3s6-2 6-3v-4.5"/></svg></div><h3>New Students</h3><p>For students applying to Trimex for the first time.</p><a class="btn btn-line" href="#form-new">Apply as New Student</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5v-15z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/></svg></div><h3>Old Students</h3><p>For continuing or returning Trimex students.</p><a class="btn btn-line" href="#form-old">Continue Enrollment</a></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-4M4 4v4h4M4 13a8 8 0 0 0 14 4M20 20v-4h-4"/></svg></div><h3>Transferee Students</h3><p>For students transferring from another institution.</p><a class="btn btn-line" href="#form-transferee">Apply as Transferee</a></article></div></div></section>
+<!-- CONTACT -->
+<section class="alt" id="contact"><div class="wrap"><span class="eyebrow">Contact</span><h2>Contact Us</h2><p class="lead">TRIMEX Colleges · College of Computer Studies</p>
+<div class="grid g5"><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div><h3>Address</h3><p>[Add official campus address]</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></div><h3>Phone</h3><p>[Add official phone number]</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>Email</h3><p>[Add official email address]</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Website</h3><p>[Add official website]</p></article><article class="card"><div class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.2 11l7.6-4M8.2 13l7.6 4"/></svg></div><h3>Social Media</h3><p>[Add official social media page]</p></article></div></div></section>
+</main>
+<footer><div class="wrap"><div class="cols">
+<div><img src="img/logo.png" alt="TRIMEXC@NNECT logo"><h4>TRIMEXC@NNECT</h4><p>College of Computer Studies</p></div>
+<div><h4>Links</h4><a href="#home">Home</a><a href="#gazette">Gazette</a><a href="#ccsms">CCS-MS</a><a href="#enroll">Enroll Now!</a><a href="#about">About</a></div>
+<div><h4>Student Project</h4><p>Name: Trixie Joy S. Gabijan<br>Section: BSIT-MWD5-M2<br>Subject: USERDSGN LAB<br>Professor: Dr. Louie Agustin</p></div></div>
+<p class="copy" style="border:0;padding:0 0 8px">USERDSGN LAB | BSIT-MWD5-M2</p>
+<p class="copy">© 2026 TRIMEXC@NNECT – College of Computer Studies. All rights reserved.</p></div></footer>
+<div class="modal" id="form-new" role="dialog" aria-label="New Students"><div class="sheet"><a class="close" href="#enroll" aria-label="Close form">×</a>
+ <h2 style="font-size:1.5rem">New Students</h2><p style="color:var(--gray)">Applying to Trimex for the first time. Fields marked * are required.</p>
+ <!-- Front-end only: add name="" attributes and a real action URL to connect your existing enrollment handler. -->
+ <form action="#success" method="get"><label for="n1">Full Name *<input id="n1" type="text" required></label><label for="n2">Date of Birth *<input id="n2" type="date" required></label><label for="n3">Email Address *<input id="n3" type="email" required></label><label for="n4">Contact Number *<input id="n4" type="tel" required></label><label for="n5" class="full">Address *<input id="n5" type="text" required></label><label for="n6">Preferred Program *<select id="n6" required><option value="">Select…</option><option>Bachelor of Science in Information Technology</option><option>Bachelor of Science in Computer Science</option><option>Bachelor of Science in Information Systems</option></select></label><label for="n7">Previous School *<input id="n7" type="text" required></label><label for="n8" class="full">Message / Additional Information<textarea id="n8" rows="3"></textarea></label><button class="btn btn-red full" type="submit">Submit Application</button></form></div></div>
+<div class="modal" id="form-old" role="dialog" aria-label="Old Students"><div class="sheet"><a class="close" href="#enroll" aria-label="Close form">×</a>
+ <h2 style="font-size:1.5rem">Old Students</h2><p style="color:var(--gray)">For continuing or returning students. Fields marked * are required.</p>
+ <!-- Front-end only: add name="" attributes and a real action URL to connect your existing enrollment handler. -->
+ <form action="#success" method="get"><label for="o1">Student Number *<input id="o1" type="text" required></label><label for="o2">Full Name *<input id="o2" type="text" required></label><label for="o3">Email Address *<input id="o3" type="email" required></label><label for="o4">Contact Number *<input id="o4" type="tel" required></label><label for="o5">Current Program *<select id="o5" required><option value="">Select…</option><option>Bachelor of Science in Information Technology</option><option>Bachelor of Science in Computer Science</option><option>Bachelor of Science in Information Systems</option></select></label><label for="o6">Year Level *<select id="o6" required><option value="">Select…</option><option>1st Year</option><option>2nd Year</option><option>3rd Year</option><option>4th Year</option></select></label><label for="o7">Semester *<select id="o7" required><option value="">Select…</option><option>1st Semester</option><option>2nd Semester</option><option>Summer</option></select></label><label for="o8" class="full">Enrollment Concern<textarea id="o8" rows="3"></textarea></label><button class="btn btn-red full" type="submit">Submit Enrollment</button></form></div></div>
+<div class="modal" id="form-transferee" role="dialog" aria-label="Transferee Students"><div class="sheet"><a class="close" href="#enroll" aria-label="Close form">×</a>
+ <h2 style="font-size:1.5rem">Transferee Students</h2><p style="color:var(--gray)">For students transferring from another institution. Fields marked * are required.</p>
+ <!-- Front-end only: add name="" attributes and a real action URL to connect your existing enrollment handler. -->
+ <form action="#success" method="get"><label for="t1">Full Name *<input id="t1" type="text" required></label><label for="t2">Date of Birth *<input id="t2" type="date" required></label><label for="t3">Email Address *<input id="t3" type="email" required></label><label for="t4">Contact Number *<input id="t4" type="tel" required></label><label for="t5">Previous School *<input id="t5" type="text" required></label><label for="t6">Previous Program *<input id="t6" type="text" required></label><label for="t7">Units Earned *<input id="t7" type="number" required></label><label for="t8">Preferred Program *<select id="t8" required><option value="">Select…</option><option>Bachelor of Science in Information Technology</option><option>Bachelor of Science in Computer Science</option><option>Bachelor of Science in Information Systems</option></select></label><label for="t9" class="full">Reason for Transfer<textarea id="t9" rows="3"></textarea></label><label for="t10" class="full">Additional Information<textarea id="t10" rows="3"></textarea></label><button class="btn btn-red full" type="submit">Submit Transfer Application</button></form></div></div>
+<div class="modal thanks" id="success" role="dialog" aria-label="Submitted"><div class="sheet"><div class="big" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/></svg></div><h2 style="font-size:1.5rem">Form Submitted</h2><p style="color:var(--gray);margin:10px 0 20px">Thank you! Your form passed validation. This is a student project website, so no data has been sent to a server.</p><a class="btn btn-red" href="#home">Back to Home</a></div></div>
+</body></html>
