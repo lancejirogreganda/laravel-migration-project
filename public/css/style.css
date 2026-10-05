@@ -1,0 +1,1319 @@
+/* =========================================================
+   MODERN LIGHT BLUE + DARK BLUE DESIGN
+   Navbar redesigned as a modern pill-style navigation
+   ========================================================= */
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+
+    background: #f3f8ff;
+
+    color: #102a43;
+
+    min-height: 100vh;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   HEADER / NAVIGATION
+========================================================= */
+
+header {
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    padding: 14px 7%;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border-bottom: 1px solid #d9e9f7;
+
+    box-shadow:
+        0 8px 25px rgba(20, 70, 110, 0.10);
+
+    backdrop-filter: blur(15px);
+
+    animation: headerDrop 0.7s ease;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+nav {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+/* Modern navigation button */
+
+nav a {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 11px 20px;
+
+    min-width: 90px;
+
+    color: #174a73;
+
+    background: transparent;
+
+    border: 1px solid transparent;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition:
+        color 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Hover button */
+
+nav a:hover {
+    color: #ffffff;
+
+    background: #1769aa;
+
+    border-color: #1769aa;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 7px 18px rgba(23, 105, 170, 0.25);
+}
+
+
+/* Animated blue glow */
+
+nav a::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -3px;
+
+    border-radius: 13px;
+
+    border: 1px solid transparent;
+
+    transition: border-color 0.3s ease;
+}
+
+nav a:hover::before {
+    border-color: rgba(84, 172, 235, 0.4);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+main {
+    min-height: calc(100vh - 150px);
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 5% 15%,
+            rgba(86, 180, 239, 0.15),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 95% 85%,
+            rgba(20, 83, 130, 0.10),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #eef7ff
+        );
+}
+
+
+/* Decorative circle */
+
+main::before {
+    content: "";
+
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    right: -150px;
+    top: 80px;
+
+    border-radius: 50%;
+
+    border: 55px solid rgba(48, 145, 207, 0.06);
+
+    animation:
+        floatingShape 8s ease-in-out infinite;
+}
+
+
+/* Decorative blue circle */
+
+main::after {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 190px;
+
+    left: -90px;
+    bottom: 80px;
+
+    border-radius: 50%;
+
+    background: rgba(55, 155, 218, 0.08);
+
+    animation:
+        floatingShape 6s ease-in-out infinite reverse;
+}
+
+
+/* =========================================================
+   PAGE TITLE
+========================================================= */
+
+h1 {
+    position: relative;
+
+    z-index: 2;
+
+    color: #123f68;
+
+    font-size: clamp(36px, 5vw, 56px);
+
+    font-family: "Trebuchet MS", Arial, sans-serif;
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 25px;
+
+    animation: titleReveal 0.9s ease 0.2s both;
+}
+h1 {
+    text-align: center;
+    color: #155783;
+    margin: 0 auto 25px;
+}
+
+
+/* Blue title underline */
+
+h1::after {
+    content: "";
+
+    display: block;
+
+    width: 65px;
+    height: 4px;
+
+    margin: 16px auto 0;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1769aa,
+            #63b8e8
+        );
+
+    animation:
+        expandLine 0.8s ease;
+}
+
+
+h2 {
+    color: #153e5f;
+
+    margin-bottom: 15px;
+}
+
+
+p {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin: 10px auto;
+
+    max-width: 800px;
+
+    color: #536f86;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CONTENT CARD
+========================================================= */
+
+.card {
+    position: relative;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    max-width: 850px;
+
+    margin: 35px auto;
+
+    padding: 45px;
+
+    border: 1px solid #d8eaf7;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 45px rgba(21, 72, 110, 0.10);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp 0.9s ease;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Blue top border */
+
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0d4775,
+            #2589c5,
+            #7ac9ee
+        );
+}
+
+
+/* Decorative circle */
+
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: -60px;
+    bottom: -60px;
+
+    border-radius: 50%;
+
+    background: rgba(71, 166, 220, 0.08);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+
+    border-color: #b9dced;
+
+    box-shadow:
+        0 22px 50px rgba(21, 72, 110, 0.16);
+}
+
+
+/* =========================================================
+   GENERAL BUTTON
+========================================================= */
+
+button,
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    background: #155783;
+
+    color: #ffffff;
+
+    border: 2px solid #155783;
+
+    padding: 12px 28px;
+
+    margin-top: 20px;
+
+    border-radius: 30px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Button shine */
+
+button::before,
+.btn::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.3),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.5s ease;
+}
+
+button:hover::before,
+.btn:hover::before {
+    left: 130%;
+}
+
+button:hover,
+.btn:hover {
+    background: #0b3656;
+
+    border-color: #0b3656;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(21, 87, 131, 0.28);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            #082b49,
+            #104c73
+        );
+
+    color: #ffffff;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    border-top: 4px solid #5bb8e8;
+
+    overflow: hidden;
+}
+
+
+/* Animated footer light */
+
+footer::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #9ddcff,
+            transparent
+        );
+
+    animation:
+        footerLight 4s linear infinite;
+}
+
+
+/* Footer decorative circle */
+
+footer::after {
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    right: -100px;
+    bottom: -120px;
+
+    border-radius: 50%;
+
+    background: rgba(84, 181, 235, 0.12);
+
+    animation:
+        floatingShape 7s ease-in-out infinite;
+}
+
+
+footer p {
+    position: relative;
+
+    z-index: 2;
+
+    color: #d8edf9;
+
+    font-size: 14px;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   SERVICES PAGE
+========================================================= */
+
+.services-page {
+    position: relative;
+
+    min-height: calc(100vh - 150px);
+
+    padding: 75px 30px 90px;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            rgba(86, 180, 239, 0.14),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            rgba(23, 82, 125, 0.10),
+            transparent 30%
+        ),
+        #f4faff;
+
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   SERVICES TITLE
+========================================================= */
+
+.services-title {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 60px;
+
+    animation:
+        fadeDown 0.8s ease;
+}
+
+
+.services-title h1 {
+    color: #124b76;
+
+    font-size: clamp(38px, 5vw, 52px);
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+
+/* Remove main heading line */
+
+.services-title h1::after {
+    display: none;
+}
+
+
+/* Small line above title */
+
+.services-title h1::before {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 4px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #155783,
+            #62bee9
+        );
+}
+
+
+.services-title p {
+    color: #60798d;
+
+    font-size: 16px;
+
+    max-width: 700px;
+
+    margin: 20px auto 0;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   SERVICES GRID
+========================================================= */
+
+.services-grid {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1150px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 28px;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+========================================================= */
+
+.service-card {
+    position: relative;
+
+    background: #ffffff;
+
+    padding: 38px 32px;
+
+    min-height: 360px;
+
+    border: 1px solid #d9eaf5;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(21, 72, 110, 0.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp 0.8s ease both;
+
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/* Stagger animation */
+
+.service-card:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.service-card:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.service-card:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.service-card:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.service-card:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+
+/* Top animated line */
+
+.service-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #104c73,
+            #2589c5,
+            #71c8ec
+        );
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition:
+        transform 0.4s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
+
+/* Decorative circle */
+
+.service-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 140px;
+    height: 140px;
+
+    right: -70px;
+    bottom: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(76, 174, 226, 0.07);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+.service-card:hover::after {
+    transform: scale(1.5);
+
+    background: rgba(76, 174, 226, 0.12);
+}
+
+
+/* Hover */
+
+.service-card:hover {
+    transform: translateY(-12px);
+
+    border-color: #b6d8eb;
+
+    box-shadow:
+        0 22px 45px rgba(21, 72, 110, 0.15);
+}
+
+
+/* =========================================================
+   SERVICE ICON
+========================================================= */
+
+.service-icon {
+    position: relative;
+
+    z-index: 3;
+
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #155783,
+            #238ac2
+        );
+
+    color: #ffffff;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 8px 20px rgba(21, 87, 131, 0.22);
+
+    transition:
+        transform 0.4s ease,
+        border-radius 0.4s ease,
+        background 0.4s ease;
+}
+
+
+.service-card:hover .service-icon {
+    transform:
+        rotate(-6deg)
+        scale(1.08);
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0b3656,
+            #1769aa
+        );
+}
+
+
+/* =========================================================
+   SERVICE TITLE
+========================================================= */
+
+.service-card h2 {
+    position: relative;
+
+    z-index: 3;
+
+    color: #153e5f;
+
+    font-size: 21px;
+
+    font-weight: 750;
+
+    margin-bottom: 14px;
+}
+
+
+.service-card h2::after {
+    content: "";
+
+    display: block;
+
+    width: 35px;
+    height: 3px;
+
+    margin-top: 9px;
+
+    border-radius: 10px;
+
+    background: #3b9bd0;
+
+    transition:
+        width 0.3s ease;
+}
+
+.service-card:hover h2::after {
+    width: 60px;
+}
+
+
+/* =========================================================
+   SERVICE DESCRIPTION
+========================================================= */
+
+.service-card p {
+    position: relative;
+
+    z-index: 3;
+
+    color: #637b8e;
+
+    font-size: 15px;
+
+    line-height: 1.75;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   NEW LEARN MORE BUTTON
+========================================================= */
+
+.learn-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 150px;
+
+    padding: 11px 21px;
+
+    color: #155783;
+
+    background: #e9f6fd;
+
+    border: 2px solid #9ed4ed;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    position: relative;
+
+    z-index: 5;
+
+    overflow: hidden;
+
+    transition:
+        color 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Arrow */
+
+.learn-btn::after {
+    content: "→";
+
+    font-size: 18px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.learn-btn:hover {
+    color: #ffffff;
+
+    background: #155783;
+
+    border-color: #155783;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 18px rgba(21, 87, 131, 0.25);
+}
+
+.learn-btn:hover::after {
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes headerDrop {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes expandLine {
+
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 65px;
+    }
+}
+
+
+@keyframes floatingShape {
+
+    0%,
+    100% {
+        transform:
+            translate(0, 0);
+    }
+
+    50% {
+        transform:
+            translate(20px, -20px);
+    }
+}
+
+
+@keyframes footerLight {
+
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+    header {
+        padding: 14px 25px;
+    }
+
+    nav {
+        gap: 5px;
+    }
+
+    nav a {
+        padding: 9px 13px;
+
+        font-size: 14px;
+
+        min-width: auto;
+    }
+
+    .services-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .services-page {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 14px 15px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+
+        gap: 5px;
+    }
+
+    nav a {
+        font-size: 12px;
+
+        padding: 8px 11px;
+    }
+
+    main {
+        padding: 55px 15px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .card {
+        padding: 32px 22px;
+
+        margin-top: 25px;
+    }
+
+    .services-page {
+        padding: 55px 15px 70px;
+    }
+
+    .services-title {
+        margin-bottom: 40px;
+    }
+
+    .services-title h1 {
+        font-size: 35px;
+    }
+
+    .services-title p {
+        font-size: 15px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .service-card {
+        min-height: auto;
+
+        padding: 30px 25px;
+    }
+
+    .service-icon {
+        width: 65px;
+        height: 65px;
+
+        font-size: 27px;
+    }
+
+    footer {
+        padding: 25px 15px;
+    }
+
+    footer p {
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 420px) {
+
+    nav {
+        gap: 3px;
+    }
+
+    nav a {
+        padding: 7px 8px;
+
+        font-size: 11px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    .services-title h1 {
+        font-size: 30px;
+    }
+
+    .card {
+        padding: 28px 18px;
+    }
+
+    .service-card {
+        padding: 28px 20px;
+    }
+
+    .learn-btn {
+        width: 100%;
+    }
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    padding: 14px 7%;
+
+    background-color: #dff1ff;
+
+    border-bottom: 3px solid #1769aa;
+
+    box-shadow: 0 8px 25px rgba(20, 70, 110, 0.15);
+
+    animation: titleReveal 0.9s ease 0.2s both;
+}
+main {
+    min-height: calc(100vh - 150px);
+
+    padding: 80px 20px;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff 0%,
+            #eaf6ff 50%,
+            #cfeaff 100%
+        );
+}
